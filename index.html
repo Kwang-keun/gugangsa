@@ -22,6 +22,7 @@
     <a href="directions.html">찾아오시는 길</a>
     <a href="schedule.html">법회 일정</a>
     <a href="contact.html">연락처</a>
+    <button class="nav-baekjung js-open-baekjung" type="button">백중 안내</button>
   </nav>
 </header>
 
@@ -160,6 +161,34 @@
     <p class="footer-copy">© 2026 천태종 서울 구강사. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- 백중 안내 모바일 FAB -->
+<button class="baekjung-fab js-open-baekjung" type="button">백중 안내</button>
+
+<!-- 백중(우란분절) 불공 안내 모달 -->
+<div id="baekjungModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="baekjungTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="baekjungClose" aria-label="닫기">&#x2715;</button>
+    <span class="modal-eyebrow">음력 7월 보름</span>
+    <h2 class="modal-title" id="baekjungTitle">백중(우란분절) 불공 안내</h2>
+    <p class="modal-desc">음력 7월 보름은 우란분절(백중)입니다. 백중인 우란분절을 맞이하여, 목련존자의 지극한 효심이 지옥도의 어머니를 구해 냈듯이, 신도님들의 지극한 정성과 신심으로 선망부모와 인연 있는 모든 영가님들의 극락왕생 발원과 업장소멸을 기원하는 천도재를 봉행합니다. 많은 동참 바랍니다.</p>
+    <div class="modal-schedule">
+      <div class="modal-schedule-row">
+        <span class="modal-schedule-label">입재</span>
+        <span class="modal-schedule-date">7월 11일(토) 오후 2시</span>
+      </div>
+      <div class="modal-schedule-row">
+        <span class="modal-schedule-label">중재</span>
+        <span class="modal-schedule-date">8월 8일(토) 오후 2시</span>
+      </div>
+      <div class="modal-schedule-row">
+        <span class="modal-schedule-label">회향</span>
+        <span class="modal-schedule-date">8월 27일(목) 오전 9시</span>
+      </div>
+    </div>
+    <p class="modal-contact">문의: 02-479-4450~2</p>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
