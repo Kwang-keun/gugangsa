@@ -553,30 +553,42 @@ footer{
 /* ===== Sub-page layout ===== */
 .page-main{ padding-top:58px; }
 
-/* ===== Hero CTA button ===== */
-.hero-blog-btn{
+/* ===== Hero CTA buttons ===== */
+.hero-cta{
   position:absolute;
-  left:50%;
-  bottom:24px;
+  left:50%; bottom:24px;
   transform:translateX(-50%);
   z-index:6;
-  padding:12px 28px;
-  border-radius:999px;
-  background:rgba(250,246,238,0.95);
+  display:flex; gap:10px; align-items:center;
+}
+.hero-baekjung-btn{
+  padding:12px 24px; border-radius:999px;
+  background:var(--gold); color:var(--indigo);
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:700; font-size:14px; letter-spacing:0.02em;
+  border:none; cursor:pointer; white-space:nowrap;
+  box-shadow:0 2px 14px rgba(184,146,74,0.38);
+  transition:transform .2s, background .2s, box-shadow .2s;
+}
+.hero-baekjung-btn:hover{
+  transform:translateY(-2px);
+  background:#c9a254;
+  box-shadow:0 4px 22px rgba(184,146,74,0.55);
+}
+.hero-blog-btn{
+  padding:12px 24px; border-radius:999px;
+  background:rgba(250,246,238,0.88);
   color:var(--indigo);
-  font-weight:700;
-  font-size:14px;
-  letter-spacing:0.02em;
-  border:1px solid var(--gold);
+  font-weight:700; font-size:14px; letter-spacing:0.02em;
+  border:1px solid rgba(184,146,74,0.5);
   transition:transform .2s, background .2s;
   white-space:nowrap;
 }
-.hero-blog-btn:hover{
-  transform:translateX(-50%) translateY(-2px);
-  background:var(--hanji-light);
-}
+.hero-blog-btn:hover{ transform:translateY(-2px); background:var(--hanji-light); }
 @media(max-width:640px){
-  .hero-blog-btn{ font-size:13px; padding:10px 20px; bottom:16px; }
+  .hero-cta{ bottom:16px; gap:8px; }
+  .hero-baekjung-btn{ font-size:12px; padding:9px 16px; }
+  .hero-blog-btn{ font-size:12px; padding:9px 16px; }
 }
 
 /* ===== Active nav link ===== */
@@ -586,43 +598,6 @@ footer{
   opacity:1;
 }
 .nav-links a.active::after{ width:100%; }
-
-/* ===== 백중 안내 버튼 (헤더 nav) ===== */
-.nav-baekjung{
-  display:inline-flex; align-items:center;
-  padding:8px 18px; border-radius:999px;
-  background:var(--dancheong-red); color:#fff;
-  font-family:'Noto Sans KR', sans-serif;
-  font-weight:700; font-size:13px; letter-spacing:0.02em;
-  border:none; cursor:pointer; white-space:nowrap;
-  transition:background .2s, transform .2s;
-  animation:navBtnPulse 2.5s ease-in-out infinite;
-}
-.nav-baekjung:hover{
-  background:#7d2d23; transform:translateY(-1px);
-  animation-play-state:paused;
-}
-@keyframes navBtnPulse{
-  0%,100%{ box-shadow:0 0 0 0 rgba(155,58,46,0); }
-  50%{     box-shadow:0 0 0 6px rgba(155,58,46,0.22); }
-}
-
-/* ===== 백중 안내 FAB (모바일 전용) ===== */
-.baekjung-fab{
-  display:none;
-  position:fixed; bottom:24px; right:20px; z-index:150;
-  padding:11px 20px; border-radius:999px;
-  background:var(--dancheong-red); color:#fff;
-  font-family:'Noto Sans KR', sans-serif;
-  font-weight:700; font-size:13px;
-  border:none; cursor:pointer;
-  box-shadow:0 4px 20px rgba(155,58,46,0.38);
-  animation:navBtnPulse 2.5s ease-in-out infinite;
-  white-space:nowrap;
-}
-@media(max-width:640px){
-  .baekjung-fab{ display:inline-flex; align-items:center; }
-}
 
 /* ===== 백중 모달 ===== */
 .modal-backdrop{
