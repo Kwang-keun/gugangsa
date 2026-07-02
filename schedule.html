@@ -7,26 +7,44 @@
 <meta name="description" content="천태종 서울 구강사 법회 일정 - 정기 법회, 관음재일 안내">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Song+Myung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="topbar">
-  <a href="index.html" class="brand">
-    <span class="seal"><img src="img/ctg_jonggi.jpg" alt="천태종 종기" onerror="this.parentElement.style.display='none'"></span>
-    천태종 서울 구강사
-  </a>
+  <h1 class="brand-h1">
+    <a href="index.html" class="brand">
+      <span class="seal"><img src="img/ctg_jonggi.jpg" alt="천태종 종기" onerror="this.parentElement.style.display='none'"></span>
+      천태종 서울 구강사
+    </a>
+  </h1>
   <nav class="nav-links">
     <a href="intro.html">소개</a>
     <a href="directions.html">찾아오시는 길</a>
     <a href="schedule.html" class="active">법회 일정</a>
     <a href="contact.html">연락처</a>
   </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" type="button">
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+  </button>
 </header>
 
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="메뉴 닫기">&#x2715;</button>
+  <nav class="mobile-nav-links">
+    <a href="intro.html">소개</a>
+    <a href="directions.html">찾아오시는 길</a>
+    <a href="schedule.html" class="active">법회 일정</a>
+    <a href="contact.html">연락처</a>
+  </nav>
+</div>
+
 <main class="page-main">
-  <section>
+  <div class="page-band page-band--sage">
+  <section class="reveal-on-scroll">
     <span class="section-label">법회 안내</span>
     <h2 class="section-title">법회 일정</h2>
     <div class="schedule-card">
@@ -60,6 +78,7 @@
     </div>
     <p style="margin-top:18px; font-size:14px; opacity:0.65;">※ 정확한 일정은 변동될 수 있으니 공식 블로그 공지를 확인해 주세요.</p>
   </section>
+  </div>
 </main>
 
 <footer>
