@@ -803,20 +803,6 @@ footer{
   z-index:6;
   display:flex; gap:10px; align-items:center;
 }
-.hero-baekjung-btn{
-  padding:12px 24px; border-radius:999px;
-  background:var(--gold); color:var(--indigo);
-  font-family:'Noto Sans KR', sans-serif;
-  font-weight:700; font-size:14px; letter-spacing:0.02em;
-  border:none; cursor:pointer; white-space:nowrap;
-  box-shadow:0 2px 14px rgba(184,146,74,0.38);
-  transition:transform .2s, background .2s, box-shadow .2s;
-}
-.hero-baekjung-btn:hover{
-  transform:translateY(-2px);
-  background:#c9a254;
-  box-shadow:0 4px 22px rgba(184,146,74,0.55);
-}
 .hero-blog-btn{
   padding:12px 24px; border-radius:999px;
   background:rgba(250,246,238,0.88);
@@ -829,7 +815,6 @@ footer{
 .hero-blog-btn:hover{ transform:translateY(-2px); background:var(--hanji-light); }
 @media(max-width:640px){
   .hero-cta{ bottom:16px; gap:8px; }
-  .hero-baekjung-btn{ font-size:12px; padding:9px 16px; }
   .hero-blog-btn{ font-size:12px; padding:9px 16px; }
 }
 
@@ -840,82 +825,6 @@ footer{
   opacity:1;
 }
 .nav-links a.active::after{ width:100%; }
-
-/* ===== 백중 모달 ===== */
-.modal-backdrop{
-  position:fixed; inset:0; z-index:200;
-  background:rgba(31,42,61,0.75);
-  display:flex; align-items:center; justify-content:center;
-  padding:16px;
-  opacity:0; visibility:hidden;
-  transition:opacity .28s ease, visibility .28s ease;
-}
-.modal-backdrop.is-open{ opacity:1; visibility:visible; }
-.modal-box{
-  position:relative;
-  background:var(--hanji-light);
-  border-radius:16px;
-  max-width:480px; width:calc(100% - 32px);
-  padding:40px 32px;
-  box-shadow:0 24px 64px rgba(0,0,0,0.3);
-  transform:translateY(12px) scale(0.97); opacity:0;
-  transition:transform .3s cubic-bezier(0.34,1.4,0.64,1), opacity .28s ease;
-}
-.modal-backdrop.is-open .modal-box{
-  transform:translateY(0) scale(1); opacity:1;
-}
-.modal-close{
-  position:absolute; top:14px; right:16px;
-  width:32px; height:32px;
-  display:flex; align-items:center; justify-content:center;
-  border:none; background:transparent;
-  color:var(--ink); opacity:0.4;
-  font-size:20px; cursor:pointer; border-radius:50%;
-  transition:background .18s, opacity .18s;
-  line-height:1; font-family:sans-serif;
-}
-.modal-close:hover{ background:rgba(43,37,32,0.08); opacity:0.85; }
-.modal-eyebrow{
-  display:block; text-align:center;
-  font-size:11px; letter-spacing:0.22em;
-  color:var(--gold); font-weight:700; margin-bottom:8px;
-}
-.modal-title{
-  text-align:center; font-size:22px; font-weight:700;
-  color:var(--indigo); margin-bottom:20px;
-  word-break:keep-all; line-height:1.4;
-}
-.modal-desc{
-  font-size:15px; line-height:1.85;
-  color:var(--ink); word-break:keep-all; margin-bottom:26px;
-}
-.modal-divider{
-  border:none; border-top:1px solid var(--line); margin:0 0 0;
-}
-.modal-schedule{ display:flex; flex-direction:column; margin-bottom:22px; }
-.modal-schedule-row{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:13px 0; border-bottom:1px solid var(--line);
-}
-.modal-schedule-row:first-child{ border-top:1px solid var(--line); }
-.modal-schedule-label{
-  font-size:14px; font-weight:700;
-  color:var(--dancheong-red); letter-spacing:0.04em;
-  flex-shrink:0; width:40px;
-}
-.modal-schedule-date{
-  font-size:15px; font-weight:700;
-  color:var(--indigo); text-align:right;
-}
-.modal-contact{
-  text-align:center; font-size:13px;
-  color:var(--ink); opacity:0.65; letter-spacing:0.02em;
-}
-@media(max-width:480px){
-  .modal-box{ padding:32px 20px; }
-  .modal-title{ font-size:19px; }
-  .modal-desc{ font-size:14px; }
-}
 
 /* ===== Mobile Hamburger Button ===== */
 .menu-toggle {

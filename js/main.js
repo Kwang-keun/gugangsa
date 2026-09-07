@@ -1,37 +1,5 @@
 (function () {
-  // ===== 1. 백중(우란분절) 모달 스크립트 =====
-  var backdrop = document.getElementById('baekjungModal');
-  var openBtns = document.querySelectorAll('.js-open-baekjung');
-  var closeBtn = document.getElementById('baekjungClose');
-
-  if (backdrop && openBtns.length > 0 && closeBtn) {
-    function openModal() {
-      backdrop.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-
-    function closeModal() {
-      backdrop.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-
-    openBtns.forEach(function (btn) {
-      btn.addEventListener('click', openModal);
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-
-    backdrop.addEventListener('click', function (e) {
-      if (e.target === backdrop) closeModal();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && backdrop.classList.contains('is-open')) closeModal();
-    });
-  }
-
-  // ===== 2. 모바일 메뉴 토글 스크립트 =====
+  // ===== 1. 모바일 메뉴 토글 스크립트 =====
   var menuToggle = document.getElementById('menuToggle');
   var mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
   var mobileLinks = document.querySelectorAll('.mobile-nav-links a');
@@ -61,7 +29,7 @@
     });
   }
 
-  // ===== 3. 스크롤 페이드인 (Intersection Observer) =====
+  // ===== 2. 스크롤 페이드인 (Intersection Observer) =====
   var revealElements = document.querySelectorAll('.reveal-on-scroll');
   if (revealElements.length > 0 && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries, observer) {
