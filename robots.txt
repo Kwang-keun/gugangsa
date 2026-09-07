@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kwang-keun.github.io/gugangsa/sitemap.xml
+Sitemap: https://sgugangsa.kr/sitemap.xml
