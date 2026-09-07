@@ -29,7 +29,43 @@
     });
   }
 
-  // ===== 2. 스크롤 페이드인 (Intersection Observer) =====
+  // ===== 2. 상단 메뉴 드롭다운 (Quick Guide / 구강사 공지 / 구강사 소식) =====
+  var tmGroups = document.querySelectorAll('.tm-group');
+
+  function closeAllTmGroups() {
+    tmGroups.forEach(function (g) {
+      g.classList.remove('is-open');
+      var t = g.querySelector('.tm-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  if (tmGroups.length > 0) {
+    tmGroups.forEach(function (group) {
+      var trigger = group.querySelector('.tm-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasOpen = group.classList.contains('is-open');
+        closeAllTmGroups();
+        if (!wasOpen) {
+          group.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      var openGroup = document.querySelector('.tm-group.is-open');
+      if (openGroup && !openGroup.contains(e.target)) closeAllTmGroups();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAllTmGroups();
+    });
+  }
+
+  // ===== 3. 스크롤 페이드인 (Intersection Observer) =====
   var revealElements = document.querySelectorAll('.reveal-on-scroll');
   if (revealElements.length > 0 && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries, observer) {
