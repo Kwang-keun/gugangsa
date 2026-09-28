@@ -895,13 +895,3 @@ footer{
   }
 }
 
-
-/* ===== 배경음악 버튼 ===== */
-#bgm-btn{
-  position:fixed; bottom:24px; right:24px; z-index:9999;
-  width:48px; height:48px; border-radius:50%;
-  background:var(--indigo); border:2px solid var(--gold);
-  color:var(--gold); font-size:22px; line-height:1;
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; box-shadow:0 2px 12px rgba(0,0,0,0.4);
-}

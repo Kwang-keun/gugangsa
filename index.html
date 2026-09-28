@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&family=Song+Myung&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260928c">
+<link rel="stylesheet" href="css/style.css?v=20260928b">
 </head>
 <body>
 
@@ -146,7 +146,33 @@
 </footer>
 
 <script src="js/main.js?v=20260928"></script>
-<script src="js/bgm.js?v=20260928"></script>
 
+<!-- 배경음악 -->
+<audio id="bgm" loop preload="auto">
+  <source src="mp3/서울구강사 Good 남녀혼성뚜엣.mp3" type="audio/mpeg">
+</audio>
+
+<div id="bgm-btn" onclick="toggleBGM()" title="배경음악" style="
+  position:fixed; bottom:24px; right:24px; z-index:9999;
+  width:48px; height:48px; border-radius:50%;
+  background:#1F2A3D; border:2px solid #B8924A;
+  color:#B8924A; font-size:22px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 2px 12px rgba(0,0,0,0.4);
+">🔇</div>
+
+<script>
+const audio = document.getElementById("bgm");
+const btn = document.getElementById("bgm-btn");
+audio.volume = 0.3;
+document.addEventListener("click", function startBGM() {
+  audio.play().then(() => { btn.textContent = "🔊"; });
+  document.removeEventListener("click", startBGM);
+}, { once: true });
+function toggleBGM() {
+  if (audio.paused) { audio.play(); btn.textContent = "🔊"; }
+  else { audio.pause(); btn.textContent = "🔇"; }
+}
+</script>
 </body>
 </html>
