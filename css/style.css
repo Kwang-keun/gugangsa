@@ -731,31 +731,40 @@ footer{
 /* Hamburger active transformation */
 .menu-toggle.is-active .hamburger-bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
-  background-color: var(--hanji-light);
 }
 .menu-toggle.is-active .hamburger-bar:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.is-active .hamburger-bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
-  background-color: var(--hanji-light);
 }
 
-/* Mobile Nav Overlay Menu */
+/* Mobile Nav Overlay Menu — 한지 바탕 + 금박 장식 */
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
   z-index: 99;
-  background: linear-gradient(135deg, rgba(31, 42, 61, 0.98), rgba(15, 20, 30, 0.99));
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(184, 146, 74, 0.16) 0%, rgba(184, 146, 74, 0) 62%),
+    linear-gradient(180deg, #FBF8F1 0%, var(--hanji) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 110px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.mobile-menu-overlay::before {
+  content: '';
+  position: absolute;
+  top: 128px; bottom: 28px; left: 20px; right: 20px;
+  border: 1px solid rgba(184, 146, 74, 0.45);
+  outline: 1px solid rgba(184, 146, 74, 0.22);
+  outline-offset: 5px;
+  border-radius: 4px;
+  pointer-events: none;
 }
 .mobile-menu-overlay.is-open {
   opacity: 1;
@@ -765,24 +774,61 @@ footer{
   display: none; /* We toggle burger icon status instead */
 }
 .mobile-nav-links {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 30px;
   text-align: center;
 }
-.mobile-nav-links a {
-  font-family: 'Song Myung', serif;
-  font-size: 24px;
-  color: var(--hanji-light);
-  letter-spacing: 0.12em;
-  transition: color 0.25s, transform 0.25s;
-  font-weight: 500;
+.mobile-nav-links::before,
+.mobile-nav-links::after {
+  content: '◆';
+  display: block;
+  width: 150px;
+  font-size: 8px;
+  line-height: 1;
+  color: var(--gold);
+  background: linear-gradient(90deg, rgba(184,146,74,0) 0%, var(--gold) 42%, rgba(184,146,74,0) 42%, rgba(184,146,74,0) 58%, var(--gold) 58%, rgba(184,146,74,0) 100%) center / 100% 1px no-repeat;
 }
+.mobile-nav-links::before { margin-bottom: 6px; }
+.mobile-nav-links::after { margin-top: 6px; }
+.mobile-nav-links a {
+  position: relative;
+  padding-bottom: 6px;
+  font-family: 'Song Myung', serif;
+  font-size: 25px;
+  color: var(--indigo);
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: color 0.25s, opacity 0.5s ease, transform 0.5s ease;
+}
+.mobile-nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+.mobile-menu-overlay.is-open .mobile-nav-links a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-menu-overlay.is-open .mobile-nav-links a:nth-child(1) { transition-delay: 0.08s; }
+.mobile-menu-overlay.is-open .mobile-nav-links a:nth-child(2) { transition-delay: 0.16s; }
+.mobile-menu-overlay.is-open .mobile-nav-links a:nth-child(3) { transition-delay: 0.24s; }
+.mobile-menu-overlay.is-open .mobile-nav-links a:nth-child(4) { transition-delay: 0.32s; }
 .mobile-nav-links a:hover,
 .mobile-nav-links a:active {
-  color: var(--gold);
-  transform: scale(1.05);
+  color: var(--dancheong-red);
+}
+.mobile-nav-links a:hover::after,
+.mobile-nav-links a:active::after {
+  width: 100%;
 }
 
 /* ===== Scroll Reveal Animations ===== */
