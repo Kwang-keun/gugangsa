@@ -130,20 +130,19 @@
 </main>
 
 <!-- 흑판 공지 섹션 -->
-<section id="notice-board" style="background:#1a1a1a; padding:60px 20px; text-align:center;">
+<section id="notice-board" style="max-width:none; margin:0; background:#1a1a1a; padding:60px 16px; text-align:center;">
   <h2 style="color:#B8924A; font-family:'Song Myung',serif; font-size:22px; letter-spacing:0.25em; margin-bottom:30px;">📢 법회 공지</h2>
-  <div style="position:relative; display:inline-block; max-width:640px; width:100%;">
+  <div style="position:relative; display:inline-block; max-width:640px; width:100%; container-type:inline-size;">
     <img src="img/blackboard640.png" alt="법회 공지 흑판" style="width:100%; border-radius:8px; display:block;">
+    <!-- 칠판의 초록 영역(가로 7~93%, 세로 9~83%) 안쪽, 하단 분필받침 위까지만 글씨가 들어가도록 배치 -->
     <div id="notice-text" style="
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      width:72%;
+      position:absolute; top:12%; bottom:20%; left:12%; right:12%;
+      display:flex; flex-direction:column; justify-content:center; overflow:hidden;
       color:#ffffff;
       font-family:'Nanum Myeongjo',serif;
-      font-size:clamp(12px,2vw,18px);
-      line-height:2.0;
+      font-size:clamp(11px,3.4cqw,20px);
+      line-height:1.6;
       text-shadow:1px 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7);
-      white-space:pre-line;
       text-align:center;
       letter-spacing:0.05em;
     ">공지를 불러오는 중...</div>
@@ -154,12 +153,24 @@
 </section>
 <script>
 // notice.json은 GitHub Actions(.github/workflows/notice.yml)가 티스토리 RSS에서 30분마다 갱신
-fetch("notice.json", { cache: "no-store" })
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById("notice-text").textContent = data.text || "최신 공지가 없습니다.";
-  })
-  .catch(() => { document.getElementById("notice-text").textContent = "공지를 불러올 수 없습니다."; });
+(function () {
+  const board = document.getElementById("notice-text");
+  function render(text) {
+    board.textContent = "";
+    // 빈 줄은 건너뛰고, ▶로 시작하는 제목 줄은 노란 분필색으로 표시
+    text.split(/\r?\n/).map(l => l.trim()).filter(Boolean).forEach(line => {
+      const div = document.createElement("div");
+      div.textContent = line;
+      if (line.startsWith("▶")) { div.style.color = "#F6E27A"; div.style.marginTop = "0.4em"; }
+      board.appendChild(div);
+    });
+    if (board.firstChild) board.firstChild.style.marginTop = "0";
+  }
+  fetch("notice.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(data => render(data.text || "최신 공지가 없습니다."))
+    .catch(() => render("공지를 불러올 수 없습니다."));
+})();
 </script>
 
 <footer>
